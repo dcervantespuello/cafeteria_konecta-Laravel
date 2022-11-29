@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2022 at 09:39 PM
+-- Generation Time: Nov 29, 2022 at 10:04 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -84,8 +84,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `reference`, `price`, `weight`, `category`, `stock`, `created_at`, `updated_at`) VALUES
-(2, 'Helado de Vainilla', 'HE001', 5000, 200, 'Helados', 3, '2022-11-30 01:26:04', '2022-11-30 01:34:05'),
-(3, 'Dona de arequipe', 'CO001', 1500, 100, 'Comidas', 5, '2022-11-30 01:30:51', '2022-11-30 01:31:08');
+(1, 'Dona de arequipe', 'CO001', 2700, 300, 'Comidas', 13, '2022-11-30 02:02:54', '2022-11-30 02:03:58'),
+(2, 'Helado de Vainilla', 'HE001', 2000, 100, 'Helados', 6, '2022-11-30 02:03:14', '2022-11-30 02:04:03'),
+(3, 'Café con leche', 'BE001', 5000, 200, 'Bebidas', 25, '2022-11-30 02:03:37', '2022-11-30 02:03:52');
 
 -- --------------------------------------------------------
 
@@ -106,10 +107,9 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `product_id`, `sold`, `created_at`, `updated_at`) VALUES
-(1, 2, 10, '2022-11-30 01:30:02', '2022-11-30 01:30:02'),
-(2, 2, 5, '2022-11-30 01:30:08', '2022-11-30 01:30:08'),
-(3, 3, 25, '2022-11-30 01:31:08', '2022-11-30 01:31:08'),
-(4, 2, 2, '2022-11-30 01:34:05', '2022-11-30 01:34:05');
+(1, 3, 5, '2022-11-30 02:03:52', '2022-11-30 02:03:52'),
+(2, 1, 2, '2022-11-30 02:03:58', '2022-11-30 02:03:58'),
+(3, 2, 4, '2022-11-30 02:04:03', '2022-11-30 02:04:03');
 
 --
 -- Indexes for dumped tables
@@ -168,7 +168,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -178,7 +178,7 @@ ALTER TABLE `sales`
 -- Constraints for table `sales`
 --
 ALTER TABLE `sales`
-  ADD CONSTRAINT `sales_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `sales_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
