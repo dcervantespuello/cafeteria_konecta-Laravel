@@ -1,66 +1,60 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></p>
+<h1 align="center">Cafetería Konecta</h1>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Sobre la aplicación
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Aplicación web para la gestión y almacenamiento de los productos de la cafetería de una de las sedes de Konecta. Contiene las siguientes funcionalidades:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Permite ver la información general de todos los productos.
+- Permite la gestión de los productos de la cafetería a través de diferentes acciones como insertar, editar o eliminar productos de la base de datos.
+- A través de su módulo de ventas, la aplicación permite vender los productos de la base de datos y mantener la información de Stock actualizada.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Instalación
 
-## Learning Laravel
+1. Para el desarrollo de la aplicación se instaló [Composer](https://getcomposer.org/download/) y [XAMPP](https://www.apachefriends.org/es/download.html) en su versión 8.1.12, el cual incluye: 
+  - Apache 2.4.54
+  - MariaDB 10.4.27
+  - PHP 8.1.12
+  - phpMyAdmin 5.2.0
+  - XAMPP Control Panel 3.2.4
+  
+2. Luego de instalar XAMPP debemos hacer la clonación del proyecto dentro de la carpeta C:\xampp\htdocs con el comando: 
+```
+git clone https://github.com/dcervantespuello/cafeteria_konecta-Laravel.git
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+3. Se configuró un dominio de pruebas para la aplicación de siguiente manera:
+  - Se ingresó al arhivo C:\xampp\apache\conf\extra\httpd-vhosts.conf
+  - Al final de ese archivo se comentó la configuración por defecto y se agregó al final la siguiente configuración y guardamos el archivo:
+  ```
+  <VirtualHost *>
+      DocumentRoot "C:/xampp/htdocs/cafeteria_konecta-Laravel/public"
+      ServerName cafeteria-konecta.test
+      <Directory "C:/xampp/htdocs/cafeteria_konecta-Laravel/public">
+        Options All
+          AllowOverride All
+         Require all granted
+      </Directory>
+  </VirtualHost>
+  ```
+  - Ahora abrimos el blog de notas como adminitrador y abrimos el archivo C:\Windows\System32\drivers\etc\hosts.
+  - En él agregaremos la siguiente línea de código y guardamos el archivo:
+  `
+  127.0.0.1         cafeteria-konecta.test
+  `
+  - Ahora debemos abrir XAMPP y reiniciar los servicios de Apache y MySQL.
+  
+3. Ahora debemos abrir por consola la carpeta del proyecto (Visual Studio Code tiene una consola la cual puede correr linux) y ejecutamos los siguientes comandos: `composer install`
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+4. Ahora en la raiz del proyecto cambiaremos el nombre del archivo .env.example por .env y luego ejecutamos el comando: `php artisan key:generate`
+  
+5. Desde el panel de XAMPP, con los servicios activos, vamos a ingresar a PHPMyAdmin haciendo clic en el botón Admin del servicio de MySQL.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+6. Una vez en PHPMyAdmin debemos crear una nueva base de datos llamada ***cafe_db*** e importar en ella el archivo cafe_db.sql que se encuentra en la carpeta SQL en la raiz del proyecto.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+***Una vez que hemos importado la base de datos y hemos seguido los pasos anteriores, estamos listos para utilizar la aplicación.***
