@@ -29,7 +29,7 @@ class SaleController extends Controller
         $stock = $request->stock;
         $sold = $request->sold;
         $stock -= $sold;
-
+        
         $product_id = $product->id;
         $product = Product::find($product_id);
 

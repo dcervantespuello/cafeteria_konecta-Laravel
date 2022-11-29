@@ -15,6 +15,10 @@ use App\Http\Controllers\SaleController;
 |
 */
 
+Route::get('/', function () {
+    return redirect()->route('products.index');
+});
+
 Route::resource('products', ProductController::class);
 
 Route::controller(SaleController::class)->group(function () {
