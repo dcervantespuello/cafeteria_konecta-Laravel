@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::resource('products', ProductController::class);
+
+Route::controller(SaleController::class)->group(function () {
+    Route::get('sales/{product}', 'create')->name('sales.create');
+    Route::post('sales/{product}', 'store')->name('sales.store');
 });
