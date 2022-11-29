@@ -57,4 +57,4 @@ git clone https://github.com/dcervantespuello/cafeteria_konecta-Laravel.git
 
 6. Una vez en PHPMyAdmin debemos crear una nueva base de datos llamada ***cafe_db*** e importar en ella el archivo cafe_db.sql que se encuentra en la carpeta SQL en la raiz del proyecto.
 
-***Una vez que hemos importado la base de datos y hemos seguido los pasos anteriores, estamos listos para utilizar la aplicación.***
+***Una vez que hemos importado la base de datos y hemos seguido los pasos anteriores, estamos listos para utilizar la aplicación ingresando al enlace: [http://cafeteria-konecta.test](http://cafeteria-konecta.test).***
